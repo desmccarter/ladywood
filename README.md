@@ -8,7 +8,7 @@ The **Page Object Pattern** is a method of representing web pages (to be tested)
 
 #### Page Object Pattern - PageFactory Example
 
-This example attempts to show how the [Google Search Page](https://wwww.google.com) can be represented using the Page Object Pattern. 
+This example shows how the [Google Search Page](https://wwww.google.com) can be represented using the Page Object Pattern using the [SeleniumHQ PageFactoy](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) library.
 
 ##### Manually coded page class using standard SeleniumQA PageFactory
 
@@ -16,6 +16,9 @@ This example attempts to show how the [Google Search Page](https://wwww.google.c
 package org.openqa.selenium.example;
 
 import org.openqa.selenium.WebElement;
+
+// A page class written to represent the
+// Google Search page ...
 
 public class GoogleSearchPage {
     // Here's the element
