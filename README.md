@@ -4,9 +4,9 @@
 
 ### The Page Object Pattern
 
-The **Page Object Pattern** is a method of representing web pages (to be tested) as a collection of classes/objects individually. For example, the [Google Search](https://wwww.google.com) page can be represented by a physical class named *GoogleSearchPage.java* for example. This page would then contain getters and setters for setting and retriving web element data.
+The **Page Object Pattern** is a method of representing web pages (to be tested) as a collection of classes/objects individually. 
 
-#### Page Object Pattern Example
+#### Page Object Pattern - PageFactory Example
 
 This example attempts to show how the [Google Search Page](https://wwww.google.com) can be represented using the Page Object Pattern. 
 
@@ -56,12 +56,43 @@ public class UsingGoogleSearchPage {
 }
 ```
 
+#### Page Object Pattern - NEO PageFactory Example
 
-**NEO PageFactory is an extension of** [SeleniumHQ PageFactory](https://github.com/SeleniumHQ/selenium/wiki/PageFactory). 
+**As seen in the previous example, page classes are *manually coded* by the tester/developer testing the page**. **NEO Page Factory goes one step further by *dynamically generating* all classes for pages under test**.
 
-**SeleniumHQ PageFactory** (*PageFactory* for short) supports the [Page Object Pattern](https://raw.githubusercontent.com/wiki/SeleniumHQ/selenium/PageObjects.md).
-> ***Page Object Pattern***: a method of structurally representing web pages (under test) as individual objects (classes).
+```java
+package com.dmcc.sample.pages.google;
 
-Using Page**NEO Page Factory** goes one step further by ***GENERATING*** page classes for you.
+import com.dmcc.pagegen.exceptions.PageException;
+import com.dmcc.sample.pages.google.GoogleField;
+import com.dmcc.pagegen.page.mccarterp.McCarterPage;
 
+public class GooglePage extends McCarterPage{
 
+private final String url="https://www.google.com";
+private final String rRoot="../pgenexamples/src/test/resources";
+
+	public GooglePage navigate()throws PageException {
+		this.setResourcesRoot(rRoot);
+		this.navigate(url);
+		return this;
+	}
+
+	public void setQ(final String value) throws PageException{
+		this.setValue(GoogleField.Q, value);
+	}
+
+	public void clickQ()throws PageException{
+		this.click(GoogleField.Q);
+	}
+
+	public void clickGoogleSearch()throws PageException{
+		this.click(GoogleField.GoogleSearch);
+	}
+
+	public void clickIMFeelingLucky()throws PageException{
+		this.click(GoogleField.IMFeelingLucky);
+	}
+
+}
+```
