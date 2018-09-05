@@ -6,7 +6,8 @@
 
 ## Introduction
 
-This project was developed with the aim of minimising the technical aspects of web/mobile based test implementation.
+Automation QA generally comes with two hats: a business hat and the technical hat. This project was developed to help me *wear my business hat MORE than my technical hat*.
+> ... the business side is your bread and butter at the end of the day
 
 Most seasoned testers normally apply the *Page Object Pattern* when implementing web/mobile based test cases.
 
