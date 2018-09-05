@@ -4,11 +4,11 @@
 
 ### The Page Object Pattern
 
-The **Page Object Pattern** is a method of representing web pages (to be tested) as a collection of classes/objects individually. For example, the [Google Search](https://wwww.google.com) page can be represented by a physical class named *GooglePage.java* for example. This page would then contain getters and setters for setting and retriving web element data.
+The **Page Object Pattern** is a method of representing web pages (to be tested) as a collection of classes/objects individually. For example, the [Google Search](https://wwww.google.com) page can be represented by a physical class named *GoogleSearchPage.java* for example. This page would then contain getters and setters for setting and retriving web element data.
 
 #### Page Object Pattern Example
 
-This example attempts to show how the [Google Search page](https://wwww.google.com) can be represented using the Page Object Pattern. 
+This example attempts to show how the [Google Search Page](https://wwww.google.com) can be represented using the Page Object Pattern. 
 
 ```java
 package org.openqa.selenium.example;
@@ -28,7 +28,7 @@ public class GoogleSearchPage {
 }
 ```
 
-The above sample page class is one representation of the Google Search page.
+The above GoogleSearchPage class can then be used to test Google Search (by searching for *Cheese*):
 
 ```java
 package org.openqa.selenium.example;
