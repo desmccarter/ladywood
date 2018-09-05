@@ -75,6 +75,8 @@ import com.dmcc.pagegen.exceptions.PageException;
 import com.dmcc.sample.pages.google.GoogleField;
 import com.dmcc.pagegen.page.mccarterp.McCarterPage;
 
+// Dynamically generated page class: generated from https://www.google.com ...
+
 public class GooglePage extends McCarterPage{
 
 private final String url="https://www.google.com";
