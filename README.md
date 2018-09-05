@@ -10,7 +10,7 @@ The **Page Object Pattern** is a method of representing web pages (to be tested)
 
 This example attempts to show how the [Google Search Page](https://wwww.google.com) can be represented using the Page Object Pattern. 
 
-##### Manually coded page class
+##### Manually coded page class using standard SeleniumQA PageFactory
 
 ```java
 package org.openqa.selenium.example;
