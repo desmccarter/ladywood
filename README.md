@@ -6,6 +6,12 @@
 
 ## Introduction
 
+This project was developed with the aim of minimising the technical aspects of web/mobile based test implementation.
+
+Most seasoned testers normally apply the *Page Object Pattern* when implementing web/mobile based test cases.
+
+.... (intro to be completed)
+
 ### The Page Object Pattern
 
 The **Page Object Pattern** is a method of representing web pages (to be tested) as a collection of classes/objects individually. 
