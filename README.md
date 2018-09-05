@@ -58,7 +58,7 @@ public class UsingGoogleSearchPage {
 
 #### Page Object Pattern - NEO PageFactory Example
 
-**As seen in the previous example, page classes are *manually coded* by the tester/developer testing the page**. **NEO Page Factory goes one step further by *dynamically generating* all classes for pages under test**.
+As seen in the **previous example, page classes are *manually coded*** by the tester/developer testing the page. **NEO Page Factory** goes one step further by ***dynamically generating* all classes for pages under test**.
 
 ```java
 package com.dmcc.sample.pages.google;
