@@ -28,7 +28,7 @@ public class GoogleSearchPage {
 }
 ```
 
-The above GoogleSearchPage class can then be used to test Google Search (by searching for *Cheese*):
+The above page class, GoogleSearchPage, can then be used in a test (for example by searching for the text *Cheese*):
 
 ```java
 package org.openqa.selenium.example;
