@@ -1,4 +1,8 @@
 htmlfiles="src/main/resources/inputpages/files/html"
+defaultpackage="com.dmcc.sample.pages"
+script="$(basename ${0})"
+
+args="${*}"
 
 # Google ...
 #mvn clean install "exec:java" -Durl=https://www.google.com -Dpackage="com.dmcc.sample.pages.google" -Dsrc.root=../pgenexamples/src/test/java -Dresources.root=../pgenexamples/src/test/resources
@@ -24,6 +28,14 @@ htmlfiles="src/main/resources/inputpages/files/html"
 #  Last Minute
 #mvn clean install "exec:java" -Duse.file=true -Dfile=lastminute.html -Durl=https://www.lastminute.com -Dpackage="com.dmcc.sample.pages.lastminute" -Dsrc.root=../pgenexamples/src/test/java -Dresources.root=../pgenexamples/src/test/resources
 
+function show(){
+
+	argname="${1}"
+	argvalue="${2}"
+
+	printf "%-20s: %-40s\n" "${argname}" "${argvalue}"
+}
+
 function generate(){
 
 	url="${1}"
@@ -31,16 +43,147 @@ function generate(){
 	root="${3}"
 	file="${4}"
 
-	if [[ ! -z "${file}" ]]
+	if [[ -z "${url}" ]]
 	then
-		usefilearg="-Duse.file=true"
-	else
-		unset usefilearg
+		echo "[ERR] url not given"
+
+		return 1
 	fi
 
-	echo "url=${url}"
+	if [[ ! -z "${file}" ]]
+	then
+		usefileargs="-Duse.file=true -Dfile=${file}"
+	else
+		unset usefileargs
+	fi
 
-	#mvn clean install "exec:java" -Duse.file=true -Dfile=lastminute.html -Durl=${url} -Dpackage="com.dmcc.sample.pages.lastminute" -Dsrc.root=${root}/src/test/java -Dresources.root=${root}/src/test/resources
+	show "URL" "${url}"
+	show "BASE PACKAGE" "${package}"
+	show "ROOT FOLDER" "${root}"
+
+	if [[ ! -z "${file}" ]]
+	then
+		show "SOURCED FROM" "${file}"
+	else
+		show "SOURCED FROM" "${url}"
+	fi
+
+	cd ~/projects/neopagefactory
+
+	mvn clean install "exec:java" ${usefileargs} -Durl=${url} -Dpackage="${package}" -Dsrc.root=${root}/src/test/java -Dresources.root=${root}/src/test/resources
+
+	res="${?}"
+
+	cd  -
+
+	if [[ "${res}" == "0" ]]
+	then
+		echo "[INFO] Successfully generated pages"
+		return 0
+	else
+		echo "[ERR] Failed to generate pages"
+		return 1
+	fi
 }
 
-generate "https://www.lastminute.com"
+function usage(){
+	printf "[USAGE]:\n"
+	printf "\t%s -url \"the url\" [-file \"the source HTML file\": optional]\n" "${script}"
+}
+
+function error(){
+	printf "[ERR] %-30s\n" "${1}"
+}
+
+function errorAndUsage(){
+	error "${1}"
+	usage
+}
+
+function processArgs(){
+	while [[ ! -z "${1}" ]]
+	do
+		if [[ "${1}" == "-url" ]]
+		then
+			shift
+
+			if [[ -z "${1}" ]]
+			then
+				errorAndUsage "-url flag requires a supplemental argument (the URL)"
+				return 1
+			fi
+
+			URL="${1}"
+		elif [[ "${1}" == "-root" ]]
+		then
+			shift
+
+			if [[ -z "${1}" ]]
+			then
+				errorAndUsage "-root flag requires a supplemental argument (the root folder)"
+				return 1
+			fi
+
+			ROOT="${1}"
+		fi
+		
+		shift
+	done
+}
+
+function exitOnError(){
+	if [[ "${1}" != "0" ]]
+	then
+		exit "${1}"
+	fi
+}
+
+function verifyArgs(){
+	if [[ -z "${URL}" ]]
+	then
+		errorAndUsage "-url flag not given"
+		return 1
+	fi
+
+	if [[ -z "${PACKAGE}" ]]
+	then
+		pname="$(echo ${URL} | sed -n s/"^http[s]*:[\/]*[w|\.]*\([^\.]*\).*$"/"\1"/p)"
+
+		if [[ -z "${pname}" ]]
+		then
+			error "Failed to generate packagename from URL ${URL}"
+			return 1
+		fi
+
+		PACKAGE="${defaultpackage}.${pname}"
+	fi
+
+	if [[ -z "${ROOT}" ]]
+	then
+		ROOT="."
+	fi
+
+	show "URL" "${URL}"
+	show "PACKAGE" "${PACKAGE}"
+	show "ROOT" "${ROOT}"
+
+	if [[ -z "${HTMLSOURCEFILE}" ]]
+	then
+		show "HTMLSOURCEFILE" "${HTMLSOURCEFILE}"
+	fi
+}
+
+processArgs ${*}
+
+exitOnError "${?}"
+
+verifyArgs
+
+exitOnError "${?}"
+
+#generate "https://www.lastminute.com" "com.dmcc.sample.pages.lastminute" "../pgenexamples" "${htmlfiles}/lastminute.html"
+
+generate "${URL}" "${PACKAGE}" "${ROOT}" "${HTMLSOURCEFILE}"
+
+exit "${?}"
+
