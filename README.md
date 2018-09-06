@@ -159,3 +159,21 @@ public class GoogleTests extends TestAbstract {
 	}
 }
 ```
+
+#### Generating Page classes
+
+Note the difference between the two page implementations.
+
+##### All page elements have methods implemented for them
+
+**All** elements found on the Google Search page have methods generated (*Q* represents the text box, *ImFeelingLucky* represents the *I'm Feeling Lucky* button (which renders the first page found in its search) and *GoogleSearch* represents the *standard Google Search*. 
+> This becomes much more useful when testing against pages containing much more elements than Google Search.
+
+##### Webdriver initialisation/setup implied
+
+Web Driver initialisation is handled *outside* the actual test case (**by implementing the *TestAbstract*** class and **calling *init/deinit*** (before and after test execution repectively).
+> The type of webdriver is supplied as a maven argument on test execution.
+
+##### Test case is a lot clearer as to what it is doing
+
+
