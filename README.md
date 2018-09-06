@@ -223,7 +223,7 @@ The type of webdriver is supplied as a maven argument on test execution.
 
 ##### 3. Test case is a lot clearer as to what it is doing
 
-Test steps are now a lot clearer as to their intensions:
+Test steps are now a lot clearer as to their intentions:
 
 ```java
 ...
