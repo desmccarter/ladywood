@@ -223,4 +223,29 @@ The type of webdriver is supplied as a maven argument on test execution.
 
 ##### 3. Test case is a lot clearer as to what it is doing
 
+Test steps are now a lot clearer as to their intensions:
 
+```java
+...
+	// Fire up a google page and render the first search page found by
+	// searching for text (BJSS Location) ...
+
+	@Test
+	public void test01ImFeelingLucky() throws PageException{
+		GooglePage page = new GooglePage().navigate();
+		
+		page.setQ("BJSS Location");
+		page.clickIMFeelingLucky();
+	}
+	
+	// Fire up a google page and list all pages found by 
+	// searching for text (BJSS Location) ...
+
+	@Test
+	public void test02Search() throws PageException{
+		GooglePage page = new GooglePage().navigate();
+		
+		page.setQ("BJSS Location");
+		page.clickGoogleSearch();
+	}
+```
