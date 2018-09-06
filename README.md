@@ -258,3 +258,7 @@ Test steps are now a lot clearer as to their intentions:
 |--|--|
 |Maven|3.5.0+|
 |Bash|ANY|
+
+## Install Run
+
+<p name="installandrun"></p>
