@@ -196,7 +196,22 @@ This is a simple example but the efficiency is more predominant for pages *riche
 ##### 2. Webdriver initialisation/setup implied
 
 Web Driver initialisation is handled *outside* the actual test case (**by implementing the *TestAbstract*** class and **calling *init/deinit*** (before and after test execution repectively).
-> The type of webdriver is supplied as a maven argument on test execution.
+
+```java
+	@Before
+	public void setup(){
+		// *** set-up webdriver (etc) ...
+		init();
+	}
+	
+	@After
+	public void teardown(){
+		// *** de-init webdriver (etc) ...
+		deinit();
+	}
+```
+
+The type of webdriver is supplied as a maven argument on test execution.
 
 ##### 3. Test case is a lot clearer as to what it is doing
 
