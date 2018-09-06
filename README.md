@@ -1,8 +1,6 @@
 # NEO PageFactory
 
-|Last Edited by|Date|
-|---|---|
-|Des McCarter|05/09/2018|
+(*Authored by Des McCarter*)
 
 ## Introduction
 
