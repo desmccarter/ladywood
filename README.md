@@ -18,7 +18,7 @@ PageFactory enables testers to implement web / mobile based tests based on the [
 
 #### SeleniumHQ PageFactory Example
 
-This example shows the use of the Page Object Pattern. Below is a class named *GoogleSearchPage* which represents the [Google Search Page](https://wwww.google.com). This class has has a method named *searchFor* representing both the search box and *q* submit button of www.google.com.
+Below is an example using the Page Object Pattern. There is a class named *GoogleSearchPage*. This class represents the actual [Google Search Page](https://wwww.google.com) with a method named *searchFor* representing both the search box and *q* submit button of www.google.com. This class was *hand crafted*, meaning that it was (or would have been) implemented by hand.
 
 ##### Manually coded page class using standard SeleniumQA PageFactory
 
@@ -27,8 +27,8 @@ package org.openqa.selenium.example;
 
 import org.openqa.selenium.WebElement;
 
-// A page class written to represent the
-// Google Search page ...
+// A manually crasfted class representing
+// the Google Search page ...
 
 public class GoogleSearchPage {
     // Here's the element
@@ -43,7 +43,7 @@ public class GoogleSearchPage {
 }
 ```
 
-The above page class, GoogleSearchPage, can then be used in a test (for example by searching for the text *BJSS Location*):
+*GoogleSearchPage* is then used in a test below (example test: search for the text *BJSS Location*):
 
 
 ```java
@@ -72,11 +72,11 @@ public class UsingGoogleSearchPage {
 }
 ```
 
-#### Page Object Pattern - NEO PageFactory Example
+#### NEO PageFactory Example
 
 As seen in the **previous example, page classes are *manually coded*** by the tester/developer testing the page. **NEO Page Factory** goes one step further by ***dynamically generating* all classes for pages under test**.
 
-##### Dynamically generated page class
+##### Dynamically generated page class using NEO PageFactory
 
 ```java
 package com.dmcc.sample.pages.google;
@@ -117,7 +117,7 @@ private final String rRoot="../pgenexamples/src/test/resources";
 }
 ```
 
-This page class (*GooglePage*) can then be used within a test case:
+We can then use this class (*GooglePage*) within a test case, as can be seen below:
 
 ```java
 package com.dmcc.pgenexamples.google;
