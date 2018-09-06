@@ -8,8 +8,6 @@
 
 Automation QA generally comes with two hats: a business hat and the technical hat. This project was developed to help me spend more time wearing my business hat since, at the end of the day, we are generally driven by business.
 
-.... (intro to be completed)
-
 ### The Page Object Pattern
 
 The **Page Object Pattern** is a method of representing web pages (to be tested) as a collection of classes/objects individually. 
