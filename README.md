@@ -6,14 +6,18 @@
 
 ## Introduction
 
-**NEO PageFactory is an extension to the** [SeleniumHQ PageFactoy](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) **library**. PageFactory (SeleniumHQ) technically enables testers to implement web / mobile based tests based on the [Page Object Pattern](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/). In short, each page under test is mapped to an object (java, C#, ... class) with getters and setters of that class representing the *setting* and *getting* (and *clicking* etc) of page elements. **NEO PageFactory** goes one step further and *implements* page classes for you. It scans HTML documents and, based on elements found on all pages, generates page class files containing getters and setters etc representing the elements found.
+**NEO PageFactory is an extension to the** [SeleniumHQ PageFactoy](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) **library**. 
+
+### SeleniumHQ PageFactory
+
+PageFactory enables testers to implement web / mobile based tests based on the [Page Object Pattern](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/). In short, each page under test is mapped to an object (java, C#, ... class) with getters and setters of that class representing the *setting* and *getting* (and *clicking* etc) of page elements. **NEO PageFactory** goes one step further and *implements* page classes for you. It scans HTML documents and, based on elements found on all pages, generates page class files containing getters and setters etc representing the elements found.
 
 > The **Page Object Pattern** is a method of representing web pages being tested as a collection of classes/objects individually. Each class represents a page and all pages have getter / setter methods representing the elements of that page.  
 > To find out more about the Page Object Pattern click [here](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/).
 
-#### Page Object Pattern - PageFactory Example
+#### SeleniumHQ PageFactory Example
 
-This example shows how the [Google Search Page](https://wwww.google.com) can be represented using the Page Object Pattern using the [SeleniumHQ PageFactoy](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) library.
+This example shows the use of the Page Object Pattern. Below is a class named *GoogleSearchPage* which represents the [Google Search Page](https://wwww.google.com). This class has has a method named *searchFor* representing both the search box and *q* submit button of www.google.com.
 
 ##### Manually coded page class using standard SeleniumQA PageFactory
 
