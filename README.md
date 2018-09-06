@@ -168,6 +168,29 @@ Note the difference between the the standard PageFactory and NEO PageFactory tes
 
 **All elements found on the Google Search page have methods generated** (*Q* represents the search *text box*, *ImFeelingLucky* represents the *I'm Feeling Lucky button* (which renders the first page found in its search) and *GoogleSearch* represents the *standard Google Search button*.
 
+###### Generated methods
+
+```java
+// Methods generated for Google Search page
+// web elements ...
+
+	public void setQ(final String value) throws PageException{
+		this.setValue(GoogleField.Q, value);
+	}
+
+	public void clickQ()throws PageException{
+		this.click(GoogleField.Q);
+	}
+
+	public void clickGoogleSearch()throws PageException{
+		this.click(GoogleField.GoogleSearch);
+	}
+
+	public void clickIMFeelingLucky()throws PageException{
+		this.click(GoogleField.IMFeelingLucky);
+	}
+```
+
 This is a simple example but the efficiency is more predominant for pages *richer* in web elements.
 
 ##### 2. Webdriver initialisation/setup implied
