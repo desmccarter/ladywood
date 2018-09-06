@@ -195,7 +195,7 @@ This is a simple example but the efficiency is more predominant for pages *riche
 
 ##### 2. Webdriver initialisation/setup and page navigation is implied
 
-Web Driver initialisation is handled *outside* the actual test case (**by implementing the *TestAbstract*** class and **calling *init/deinit*** (before and after test execution repectively).
+Web Driver initialisation is handled *outside* the actual test case by **implementing the *TestAbstract* class and *calling init/deinit*** (before and after test execution repectively).
 
 
 ```java
@@ -213,7 +213,7 @@ Web Driver initialisation is handled *outside* the actual test case (**by implem
 
 ...
 // and page navigation ...
-// (a. Get an instance of GooglePage b. fire up *a* browser and navigate to it ...
+// (a. Get an instance of GooglePage b. fire up *a* browser and navigate to it ...)
 ...
 
 		GooglePage page = new GooglePage().navigate();
