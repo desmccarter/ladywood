@@ -164,7 +164,7 @@ public class GoogleTests extends TestAbstract {
 
 Note the difference between the the standard PageFactory and NEO PageFactory test implementations:
 
-##### 1. All Google Search page web elements have methods implemented for them
+##### 1. No need to manually code your page classes
 
 **All elements found on the Google Search page have methods generated** (*Q* represents the search *text box*, *ImFeelingLucky* represents the *I'm Feeling Lucky button* (which renders the first page found in its search) and *GoogleSearch* represents the *standard Google Search button*.
 
@@ -193,7 +193,7 @@ Note the difference between the the standard PageFactory and NEO PageFactory tes
 
 This is a simple example but the efficiency is more predominant for pages *richer* in web elements.
 
-##### 2. Webdriver initialisation/setup and page navigation is implied
+##### 2. Low level webdriver (etc) initialisation implied (hidden)
 
 Web Driver initialisation is handled *outside* the actual test case by **implementing the *TestAbstract* class and *calling init/deinit*** (before and after test execution repectively). The page is then navigated to by calling the page objects `navigate()` method:
 
@@ -249,3 +249,12 @@ Test steps are now a lot clearer as to their intentions:
 		page.clickGoogleSearch();
 	}
 ```
+
+## Requirements
+
+### Software Requirements
+
+|Requirement|Version|
+|--|--|
+|Maven|3.5.0+|
+|Bash|ANY|
