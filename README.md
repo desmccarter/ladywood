@@ -375,10 +375,6 @@ private final String rRoot="../pgenexamples/src/test/resources";
 		return this;
 	}
 
-	public void clickNbsp()throws PageException{
-		this.click(ExpediaField.Nbsp);
-	}
-
 	public void setGssSignupPassword(final String value) throws PageException{
 		this.setValue(ExpediaField.GssSignupPassword, value);
 	}
@@ -430,71 +426,6 @@ private final String rRoot="../pgenexamples/src/test/resources";
 	public void clickFlight2OriginHpFlight()throws PageException{
 		this.click(ExpediaField.Flight2OriginHpFlight);
 	}
-...
-```
-
-### Direct Line.com
-
-```java
-public class DirectlinePage extends McCarterPage{
-
-private final String url="https://www.directline.com";
-private final String rRoot="C:/Users/des.mccarter/projects/pgenexamples/src/test/resources";
-
-	public DirectlinePage navigate()throws PageException {
-		this.setResourcesRoot(rRoot);
-		this.navigate(url);
-		return this;
-	}
-
-	public void setSkipToContent(final String value) throws PageException{
-		this.setValue(DirectlineField.SkipToContent, value);
-	}
-
-	public void clickSkipToContent()throws PageException{
-		this.click(DirectlineField.SkipToContent);
-	}
-
-	public void setMenu(final String value) throws PageException{
-		this.setValue(DirectlineField.Menu, value);
-	}
-
-	public void clickMenu()throws PageException{
-		this.click(DirectlineField.Menu);
-	}
-
-	public void setDirectLineForBusiness(final String value) throws PageException{
-		this.setValue(DirectlineField.DirectLineForBusiness, value);
-	}
-
-	public void clickDirectLineForBusiness()throws PageException{
-		this.click(DirectlineField.DirectLineForBusiness);
-	}
-
-	public void setContactUs(final String value) throws PageException{
-		this.setValue(DirectlineField.ContactUs, value);
-	}
-
-	public void clickContactUs()throws PageException{
-		this.click(DirectlineField.ContactUs);
-	}
-
-	public void setCarInsurance(final String value) throws PageException{
-		this.setValue(DirectlineField.CarInsurance, value);
-	}
-
-	public void clickCarInsurance()throws PageException{
-		this.click(DirectlineField.CarInsurance);
-	}
-
-	public void setHomeInsurance(final String value) throws PageException{
-		this.setValue(DirectlineField.HomeInsurance, value);
-	}
-
-	public void clickHomeInsurance()throws PageException{
-		this.click(DirectlineField.HomeInsurance);
-	}
-
 ...
 ```
 
@@ -560,6 +491,90 @@ private final String rRoot="../pgenexamples/src/test/resources";
 
 	public void clickRegEmail()throws PageException{
 		this.click(FacebookField.RegEmail);
+	}
+...
+```
+
+### Ocado.com
+
+```java
+import com.dmcc.pagegen.exceptions.PageException;
+import com.dmcc.sample.pages.ocado.OcadoField;
+import com.dmcc.pagegen.page.mccarterp.McCarterPage;
+
+public class OcadoPage extends McCarterPage{
+
+private final String url="https://www.ocado.com/webshop/quickReg.do";
+private final String rRoot="../pgenexamples/src/test/resources";
+
+	public OcadoPage navigate()throws PageException {
+		this.setResourcesRoot(rRoot);
+		this.navigate(url);
+		return this;
+	}
+
+	public void setEntry(final String value) throws PageException{
+		this.setValue(OcadoField.Entry, value);
+	}
+
+	public void clickEntry()throws PageException{
+		this.click(OcadoField.Entry);
+	}
+
+	public void clickCustomerRegistrationOffersFlag()throws PageException{
+		this.click(OcadoField.CustomerRegistrationOffersFlag);
+	}
+
+	public void setCustomerFirstName(final String value) throws PageException{
+		this.setValue(OcadoField.CustomerFirstName, value);
+	}
+
+	public void clickCustomerFirstName()throws PageException{
+		this.click(OcadoField.CustomerFirstName);
+	}
+
+	public void setCustomerLastName(final String value) throws PageException{
+		this.setValue(OcadoField.CustomerLastName, value);
+	}
+
+	public void clickCustomerLastName()throws PageException{
+		this.click(OcadoField.CustomerLastName);
+	}
+
+	public void setCustomerLogin(final String value) throws PageException{
+		this.setValue(OcadoField.CustomerLogin, value);
+	}
+
+	public void clickCustomerLogin()throws PageException{
+		this.click(OcadoField.CustomerLogin);
+	}
+
+	public void setCustomerPassword(final String value) throws PageException{
+		this.setValue(OcadoField.CustomerPassword, value);
+	}
+
+	public void clickCustomerPassword()throws PageException{
+		this.click(OcadoField.CustomerPassword);
+	}
+
+	public void setPostcode(final String value) throws PageException{
+		this.setValue(OcadoField.Postcode, value);
+	}
+
+	public void clickPostcode()throws PageException{
+		this.click(OcadoField.Postcode);
+	}
+
+	public void clickSearch()throws PageException{
+		this.click(OcadoField.Search);
+	}
+
+	public void clickRegisterUsingPayPal()throws PageException{
+		this.click(OcadoField.RegisterUsingPayPal);
+	}
+
+	public void clickRegister()throws PageException{
+		this.click(OcadoField.Register);
 	}
 ...
 ```
