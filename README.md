@@ -14,7 +14,7 @@ PageFactory enables testers to implement web / mobile based tests based on the [
 
 > The **Page Object Pattern** is a method of representing web pages being tested as a collection of classes/objects individually. Each class represents a page and all pages have getter / setter methods representing the elements of that page.  
 
-> To find out more about the Page Object Pattern click [here](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/).
+> **To find out more about the Page Object Pattern click** [here](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/).
 
 #### SeleniumHQ PageFactory Example
 
