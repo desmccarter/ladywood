@@ -256,7 +256,7 @@ Test steps are now a lot clearer as to their intentions:
 
 |Requirement|Version|
 |--|--|
-|Java SDK|3.5.0+|
+|Java SDK|1.8.0_144|
 |Maven|3.5.0+|
 |Bash|ANY|
 
