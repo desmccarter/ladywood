@@ -317,7 +317,7 @@ cd ~/projects/myproject
 
 ## Generated POP Class Examples
 
-Here is an example POP (*Page Object Pattern*) classes generated using this utility.
+Here are a few examples of POP (*Page Object Pattern*) classes generated using this utility.
 
 <p name="examples"></p>
 
