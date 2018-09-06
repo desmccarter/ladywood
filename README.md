@@ -193,9 +193,10 @@ Note the difference between the the standard PageFactory and NEO PageFactory tes
 
 This is a simple example but the efficiency is more predominant for pages *richer* in web elements.
 
-##### 2. Webdriver initialisation/setup implied
+##### 2. Webdriver initialisation/setup and page navigation is implied
 
 Web Driver initialisation is handled *outside* the actual test case (**by implementing the *TestAbstract*** class and **calling *init/deinit*** (before and after test execution repectively).
+
 
 ```java
 	@Before
@@ -209,6 +210,12 @@ Web Driver initialisation is handled *outside* the actual test case (**by implem
 		// *** de-init webdriver (etc) ...
 		deinit();
 	}
+
+...
+// and page navigation ...
+...
+
+		GooglePage page = new GooglePage().navigate();
 ```
 
 The type of webdriver is supplied as a maven argument on test execution.
