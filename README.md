@@ -315,7 +315,7 @@ cd ~/projects/myproject
 ```
 > NOTE: GooglePage.java represents your page class. GoogleField.java represents the fields (web elements) that have been discovered on https://www.google.com.
 
-## Generated pages: Examples
+## Generated POP Class Examples
 
 Here is an example POP (*Page Object Pattern*) classes generated using this utility.
 
