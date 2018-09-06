@@ -308,3 +308,256 @@ cd ~/projects/myproject
 -rw-r--r-- 1 Des.McCarter 1049089 862 Aug 13 08:56 GooglePage.java
 ```
 > NOTE: GooglePage.java represents your page class. GoogleField.java represents the fields (web elements) that have been discovered on https://www.google.com.
+
+## Generated pages: Examples
+
+Here is an example POP (*Page Object Pattern*) classes generated using this utility.
+
+
+### Google.com
+
+```java
+package com.dmcc.sample.pages.google;
+
+import com.dmcc.pagegen.exceptions.PageException;
+import com.dmcc.sample.pages.google.GoogleField;
+import com.dmcc.pagegen.page.mccarterp.McCarterPage;
+
+public class GooglePage extends McCarterPage{
+
+private final String url="https://www.google.com";
+private final String rRoot="../pgenexamples/src/test/resources";
+
+	public GooglePage navigate()throws PageException {
+		this.setResourcesRoot(rRoot);
+		this.navigate(url);
+		return this;
+	}
+
+	public void setQ(final String value) throws PageException{
+		this.setValue(GoogleField.Q, value);
+	}
+
+	public void clickQ()throws PageException{
+		this.click(GoogleField.Q);
+	}
+
+	public void clickGoogleSearch()throws PageException{
+		this.click(GoogleField.GoogleSearch);
+	}
+
+	public void clickIMFeelingLucky()throws PageException{
+		this.click(GoogleField.IMFeelingLucky);
+	}
+
+}
+```
+
+### Expedia.co.uk
+
+```java
+package com.dmcc.sample.pages.expedia;
+
+import com.dmcc.pagegen.exceptions.PageException;
+import com.dmcc.sample.pages.expedia.ExpediaField;
+import com.dmcc.pagegen.page.mccarterp.McCarterPage;
+
+public class ExpediaPage extends McCarterPage{
+
+private final String url="https://www.expedia.co.uk";
+private final String rRoot="../pgenexamples/src/test/resources";
+
+	public ExpediaPage navigate()throws PageException {
+		this.setResourcesRoot(rRoot);
+		this.navigate(url);
+		return this;
+	}
+
+	public void clickNbsp()throws PageException{
+		this.click(ExpediaField.Nbsp);
+	}
+
+	public void setGssSignupPassword(final String value) throws PageException{
+		this.setValue(ExpediaField.GssSignupPassword, value);
+	}
+
+	public void clickGssSignupPassword()throws PageException{
+		this.click(ExpediaField.GssSignupPassword);
+	}
+
+	public void clickGssJoinProgramCheck()throws PageException{
+		this.click(ExpediaField.GssJoinProgramCheck);
+	}
+
+	public void clickGssMarketingEmailOptInCheck()throws PageException{
+		this.click(ExpediaField.GssMarketingEmailOptInCheck);
+	}
+
+	public void clickGssMarketingEmailOptDefaultValue()throws PageException{
+		this.click(ExpediaField.GssMarketingEmailOptDefaultValue);
+	}
+
+	public void setGssSigninPassword(final String value) throws PageException{
+		this.setValue(ExpediaField.GssSigninPassword, value);
+	}
+
+	public void clickGssSigninPassword()throws PageException{
+		this.click(ExpediaField.GssSigninPassword);
+	}
+
+	public void setFlightOriginHpFlight(final String value) throws PageException{
+		this.setValue(ExpediaField.FlightOriginHpFlight, value);
+	}
+
+	public void clickFlightOriginHpFlight()throws PageException{
+		this.click(ExpediaField.FlightOriginHpFlight);
+	}
+
+	public void setFlightDestinationHpFlight(final String value) throws PageException{
+		this.setValue(ExpediaField.FlightDestinationHpFlight, value);
+	}
+
+	public void clickFlightDestinationHpFlight()throws PageException{
+		this.click(ExpediaField.FlightDestinationHpFlight);
+	}
+
+	public void setFlight2OriginHpFlight(final String value) throws PageException{
+		this.setValue(ExpediaField.Flight2OriginHpFlight, value);
+	}
+
+	public void clickFlight2OriginHpFlight()throws PageException{
+		this.click(ExpediaField.Flight2OriginHpFlight);
+	}
+...
+```
+
+### Direct Line.com
+
+```java
+public class DirectlinePage extends McCarterPage{
+
+private final String url="https://www.directline.com";
+private final String rRoot="C:/Users/des.mccarter/projects/pgenexamples/src/test/resources";
+
+	public DirectlinePage navigate()throws PageException {
+		this.setResourcesRoot(rRoot);
+		this.navigate(url);
+		return this;
+	}
+
+	public void setSkipToContent(final String value) throws PageException{
+		this.setValue(DirectlineField.SkipToContent, value);
+	}
+
+	public void clickSkipToContent()throws PageException{
+		this.click(DirectlineField.SkipToContent);
+	}
+
+	public void setMenu(final String value) throws PageException{
+		this.setValue(DirectlineField.Menu, value);
+	}
+
+	public void clickMenu()throws PageException{
+		this.click(DirectlineField.Menu);
+	}
+
+	public void setDirectLineForBusiness(final String value) throws PageException{
+		this.setValue(DirectlineField.DirectLineForBusiness, value);
+	}
+
+	public void clickDirectLineForBusiness()throws PageException{
+		this.click(DirectlineField.DirectLineForBusiness);
+	}
+
+	public void setContactUs(final String value) throws PageException{
+		this.setValue(DirectlineField.ContactUs, value);
+	}
+
+	public void clickContactUs()throws PageException{
+		this.click(DirectlineField.ContactUs);
+	}
+
+	public void setCarInsurance(final String value) throws PageException{
+		this.setValue(DirectlineField.CarInsurance, value);
+	}
+
+	public void clickCarInsurance()throws PageException{
+		this.click(DirectlineField.CarInsurance);
+	}
+
+	public void setHomeInsurance(final String value) throws PageException{
+		this.setValue(DirectlineField.HomeInsurance, value);
+	}
+
+	public void clickHomeInsurance()throws PageException{
+		this.click(DirectlineField.HomeInsurance);
+	}
+
+...
+```
+
+### Facebook.com
+
+```java
+package com.dmcc.sample.pages.facebook;
+
+import com.dmcc.pagegen.exceptions.PageException;
+import com.dmcc.sample.pages.facebook.FacebookField;
+import com.dmcc.pagegen.page.mccarterp.McCarterPage;
+
+public class FacebookPage extends McCarterPage{
+
+private final String url="https://www.facebook.com";
+private final String rRoot="../pgenexamples/src/test/resources";
+
+	public FacebookPage navigate()throws PageException {
+		this.setResourcesRoot(rRoot);
+		this.navigate(url);
+		return this;
+	}
+
+	public void setEmail(final String value) throws PageException{
+		this.setValue(FacebookField.Email, value);
+	}
+
+	public void clickEmail()throws PageException{
+		this.click(FacebookField.Email);
+	}
+
+	public void setPass(final String value) throws PageException{
+		this.setValue(FacebookField.Pass, value);
+	}
+
+	public void clickPass()throws PageException{
+		this.click(FacebookField.Pass);
+	}
+
+	public void clickLogIn()throws PageException{
+		this.click(FacebookField.LogIn);
+	}
+
+	public void setFirstname(final String value) throws PageException{
+		this.setValue(FacebookField.Firstname, value);
+	}
+
+	public void clickFirstname()throws PageException{
+		this.click(FacebookField.Firstname);
+	}
+
+	public void setLastname(final String value) throws PageException{
+		this.setValue(FacebookField.Lastname, value);
+	}
+
+	public void clickLastname()throws PageException{
+		this.click(FacebookField.Lastname);
+	}
+
+	public void setRegEmail(final String value) throws PageException{
+		this.setValue(FacebookField.RegEmail, value);
+	}
+
+	public void clickRegEmail()throws PageException{
+		this.click(FacebookField.RegEmail);
+	}
+...
+```
