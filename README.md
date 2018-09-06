@@ -8,7 +8,7 @@
 
 **NEO PageFactory is an extension to the** [SeleniumHQ PageFactoy](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) **library**. 
 
-### SeleniumHQ PageFactory
+### What is SeleniumHQ PageFactory
 
 PageFactory enables testers to implement web / mobile based tests based on the [Page Object Pattern](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/). In short, each page under test is mapped to an object (java, C#, ... class) with getters and setters of that class representing the *setting* and *getting* (and *clicking* etc) of page elements. **NEO PageFactory** goes one step further and *implements* page classes for you. It scans HTML documents and, based on elements found on all pages, generates page class files containing getters and setters etc representing the elements found.
 
