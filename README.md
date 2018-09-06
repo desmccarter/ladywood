@@ -160,14 +160,15 @@ public class GoogleTests extends TestAbstract {
 }
 ```
 
-#### Generating Page classes
+#### Advantages os NEO PageFactory
 
-Note the difference between the two page implementations.
+Note the difference between the the standard PageFactory and NEO PageFactory test implementations:
 
-##### All page elements have methods implemented for them
+##### All Google Search page web elements have methods implemented for them
 
-**All** elements found on the Google Search page have methods generated (*Q* represents the text box, *ImFeelingLucky* represents the *I'm Feeling Lucky* button (which renders the first page found in its search) and *GoogleSearch* represents the *standard Google Search*. 
-> This becomes much more useful when testing against pages containing much more elements than Google Search.
+**All elements found on the Google Search page have methods generated** (*Q* represents the search *text box*, *ImFeelingLucky* represents the *I'm Feeling Lucky button* (which renders the first page found in its search) and *GoogleSearch* represents the *standard Google Search button*.
+
+This is a simple example but the efficiency is more predominant for pages *richer* in web elements.
 
 ##### Webdriver initialisation/setup implied
 
