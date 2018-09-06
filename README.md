@@ -6,8 +6,7 @@
 
 ## Introduction
 
-Automation QA generally comes with two hats: a business hat and the technical hat. This project was developed to help me *wear my business hat MORE than my technical hat*.
-> ... the business side is your bread and butter at the end of the day
+Automation QA generally comes with two hats: a business hat and the technical hat. This project was developed to help me spend more time wearing my business hat since, at the end of the day, we are generally driven by business.
 
 Most seasoned testers normally apply the *Page Object Pattern* when implementing web/mobile based test cases.
 
