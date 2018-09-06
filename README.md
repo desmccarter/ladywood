@@ -6,7 +6,7 @@ t NEO PageFactore
 
 ## Introduction
 
-If you are familiar with Page Object patterns then you can skip the introduction and jump to [Install and Run](#installandrun).
+> Note: If you are familiar with Page Object patterns then you can skip this introduction and jump to [Install and Run](#installandrun).
 
 **NEO PageFactory is an extension to the** [SeleniumHQ PageFactoy](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) **library**. 
 
