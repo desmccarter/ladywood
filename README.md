@@ -6,7 +6,8 @@
 
 ## Introduction
 
-Automation QA generally comes with two hats: a business hat and the technical hat. This project was developed to help me spend more time wearing my business hat since, at the end of the day, we are generally driven by business.
+NEO PageFactory is an extension of the [SeleniumHQ PageFactoy](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) library. PageFactory (SeleniumHQ) technically enables testers to implement web / mobile based tests based on the [Page Object Pattern](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/).
+> To find out more about the Page Object Pattern click [here](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/).
 
 ### The Page Object Pattern
 
