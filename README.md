@@ -36,7 +36,7 @@ Problems can also occur around the initial stage of development from a testers p
 
 ### Problems can be minimised using NEO PageFactory
 
-***NEO PageFactory was developed to (at least) minimise these issues***. It does so by by going one step further to SeleniumHQ PageFactory by ***GENERATING* all page classes being used for all tests**. 
+***NEO PageFactory was developed to (at least) minimise these issues***. It does so by by going one step further to SeleniumHQ PageFactory and ***GENERATES* all page object pattern classes**. 
 
 #### NEO PageFactory Saves time 
 
