@@ -11,7 +11,7 @@
 
 #### Background: SeleniumQA PageFactory
 
-**Selenium QA PageFactory** is a well known utility that enables developers and testers to implement web / mobile based tests based on the well known and commonly used [Page Object Pattern](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/). 
+**NEO PageFactory is an extension to the well known and used Selenium QA PageFactory**. SeleniumQA PageFactory is a web/mobile testing utility that enables developers and testers to implement web / mobile based tests based on the well known and commonly used [Page Object Pattern](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/). 
 
 ##### Introduction to the Page Object Pattern
 
