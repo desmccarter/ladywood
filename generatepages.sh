@@ -3,6 +3,9 @@
 # Arguments	:
 #	-url	: The URL
 #	-root	: [OPTIONAL] The root folder from which page class files are generated. Current working directory is default.
+#	-package: [OPTIONAL] The java package which all generated page class files will live under
+#	-html	: [OPTIONAL] The HTML file which contains all page elements. It will be this file that will be used to generate page classes (as opposed to the -url argument
+#		: which is STILL needed (but will not be used as the source for page class generation).
 
 htmlfiles="src/main/resources/inputpages/files/html"
 defaultpackage="com.dmcc.sample.pages"
