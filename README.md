@@ -54,7 +54,7 @@ Problems can also occur around the initial stage of development from a testers p
 
 ### Usage
 
-1. Clone and Install neopagefactory
+1. ***Clone and Install neopagefactory***
 (NOTE: This step need only be done once)
 
 ```bash
@@ -71,7 +71,7 @@ cd neopagefactory
 mvn clean install
 ```
 
-2. Generate Your POP (Page Object Pattern) Classes
+2. ***Generate Your POP (Page Object Pattern) Classes***
 
 ```bash
 # Assuming your project workspace is ~/projects/myproject
