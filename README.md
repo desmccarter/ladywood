@@ -32,7 +32,7 @@ Cases where pages under test are rich with page elements (i.e. where the number 
 
 #### 2. Acceptance Test Execution False Negatives
 
-Problems can also occur around the initial stage of development from a testers perspective, where element id's, names, xpath locations etc are frequently changed by developers (especially when these changes are not expected). Time (and hence money) is then spent attempting in resolving these issues only to conclude these (false negative) changes.
+Problems can also occur around the initial stage of development from a testers perspective, where element id's, names, xpath locations etc are frequently changed by developers (especially when these changes are not expected). Time (and hence money) is then spent in an attempt to resolving these issues only to conclude these dev changes. This results in a false negative: a failing test failing due to communication between the developer(s) and test(ers). Time and money is hence wasted a. on the actual test execution and b. on the investigation.
 
 ### Problems can be minimised using NEO PageFactory
 
