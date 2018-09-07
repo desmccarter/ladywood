@@ -36,7 +36,17 @@ Problems can also occur around the initial stage of development from a testers p
 
 ### Problems can be minimised using NEO PageFactory
 
-***NEO PageFactory was developed to (at least) minimise these issues***. It does so by by going one step further by **GENERATING all page classes being used for all tests**. This a. reduces time taken in creating page classes (as these classes can be used straight away within the test) and can also be used at the UNIT testing stage for every build as a diff between page class generations. The latter becomes very useful because it minimises (dev page modification) issues during the acceptance testing phase (which is normally the stage that page modification issues are generally discovered).
+***NEO PageFactory was developed to (at least) minimise these issues***. It does so by by going one step further by **GENERATING all page classes being used for all tests**. 
+
+#### NEO PageFactory Saves time 
+
+##### Generating page classes
+
+**NEO PageFactory reduces time taken in creating page (*object pattern*) classes, as these classes can be used straight away within the test**. This becomes very significant for element rich HTML pages.
+
+##### Can be used as part of UNIT Tests
+
+Page generation can also be used at the UNIT testing stage for every build as a diff between page class generations. The latter becomes very useful because it minimises (dev page modification) issues during the acceptance testing phase (which is normally the stage that page modification issues are generally discovered).
 
 ### How does NEO PageFactory work?
 
