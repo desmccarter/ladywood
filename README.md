@@ -13,11 +13,11 @@
 
 **Selenium QA PageFactory** is a well known utility that enables developers and testers to implement web / mobile based tests based on the well known and commonly used [Page Object Pattern](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/). 
 
-##### Page Object Pattern
+##### Introduction to the Page Object Pattern
 
-In a nutshell, each HTML page being tested is mapped to a class containing getters and setters. These getters/setters prepresent page elements and are used to set/get data to/from these elements. There are also methods in the class which are used to fire of a physical page events, such as click, doubleClick etc.
+In a nutshell, each HTML web page under test are typically mapped to one class containing getters and setters. These getters/setters prepresent page elements and are used to set/get data to/from these elements. Methods also normally exist for trigering physical page events, such as *click*, *doubleClick* etc.
 
-An instance of the page class forms the page object: an object describing elements on the page under test. This object is then typically used to programmically interact with this page, for example, by automatically filling in a form.
+Creating an instance of a page class forms the page object: an object describing elements on the page under test. This object is then typically used to programmically interact with this page during the execution of a test case, for example, by automatically filling in a form.
 
 ### Problems when using SeleniumQA PageFactory
 
@@ -31,21 +31,43 @@ Using Selenium QA PageFactory out of the box, all page classes are created manua
 
 **It works by scanning all HTML documents (via HTTP or a local HTML text file) for standard (or tailored) elements such as, input, a, select etc and, based on elements discovered, generates page object pattern based class files containing getters and setters**. These getters/setters (and action methods, such as *click*, *doubleClick* etc) represent the elements discovered on that page. The naming convension of each method is determined either by their element id's, name's or text used to display the element.
 
+### Usage
 
-**NEO PageFactory is an extension to the** [SeleniumHQ PageFactoy](https://github.com/SeleniumHQ/selenium/wiki/PageFactory) **library**. 
+1. Clone and Install neopagefactory
+(NOTE: This step need only be done once)
 
-### What is SeleniumHQ PageFactory?
+```bash
+# Assuming your root workspace for all projects is ~/projects
+cd ~/projects
 
-PageFactory enables testers to implement web / mobile based tests based on the [Page Object Pattern](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/). In short, each page under test is mapped to an object (java, C#, ... class) with getters and setters of that class representing the *setting* and *getting* (and *clicking* etc) of page elements. 
+# Clone NEO PageFactory ...
+git clone https://github.com/desmccarter/neopagefactory
 
+# Go into the newly created/cloned folder ...
+cd neopagefactory
 
-### What is NEO PageFactory?
+# Install ...
+mvn clean install
+```
 
-**NEO PageFactory goes one step further and *implements* page object pattern based classes for you**. It scans HTML documents (via HTTP or a local HTML text file) and, based on elements found on all pages, generates page class files containing getters and setters etc representing the elements found.
+2. Generate Your POP (Page Object Pattern) Classes
 
-> The **Page Object Pattern** is a method of representing web pages being tested as a collection of classes/objects individually. Each class represents a page and all pages have getter / setter methods representing the elements of that page.  
+```bash
+# Assuming your project workspace is ~/projects/myproject
+# and that you are working in a BASH instance ...
 
-> **To find out more about the Page Object Pattern click** [here](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/).
+# Go to YOUR test project folder
+cd ~/project/myproject
+
+# Generate Google.com (for example) Page Object Pattern classes
+# for your project ...
+
+~/project/nopagefactory/generateclasses -url https://www.google.com
+```
+
+#### Page class output
+
+**Page classes are (by default for now) created in the current working directory under src/main/java/com/dmcc/sample/pages**. The naming convention is *NameOfPagePage*.java, where *NameOfPage* is formed from the URL name. For example, a page class generated from *www.google.com* would have the name *GooglePage.java*, living under *src/main/java/com/dmcc/sample/pages/google*.
 
 #### SeleniumHQ PageFactory Example
 
