@@ -73,6 +73,9 @@ mvn clean install
 
 2. ***Generate Your POP (Page Object Pattern) Classes***
 
+The usage example below uses *www.google.com* as its source for page class generation.
+> Replace *www.google.com* argument with *the URL you wish to test against*.
+
 ```bash
 # Assuming your project workspace is ~/projects/myproject
 # and that you are working in a BASH instance ...
