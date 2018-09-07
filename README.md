@@ -57,8 +57,8 @@ Problems can also occur around the initial stage of development from a testers p
 1. ***Clone and Install neopagefactory***
 (NOTE: This step need only be done once)
 
-The usage example below uses *~/projects* the root folder for all your workspaces.
-> Replace usage of *~/projects* below with *the root folder of all your workspaces*.
+The usage example below uses *~/projects* as the root folder for all your development workspaces.
+> Replace usage of *~/projects* below with *the root folder of all your development workspaces*.
 
 ```bash
 # Assuming your root workspace for all projects is ~/projects
