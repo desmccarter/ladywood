@@ -7,10 +7,6 @@
 #	-html	: [OPTIONAL] The HTML file which contains all page elements. It will be this file that will be used to generate page classes (as opposed to the -url argument
 #		: which is STILL needed (but will not be used as the source for page class generation).
 
-htmlfiles="src/main/resources/inputpages/files/html"
-defaultpackage="com.dmcc.sample.pages"
-script="$(basename ${0})"
-
 args="${*}"
 
 ####################################
@@ -59,6 +55,26 @@ args="${*}"
 
 #mvn clean install "exec:java" -Duse.file=true -Dfile=lastminute.html -Durl=https://www.lastminute.com -Dpackage="com.dmcc.sample.pages.lastminute" -Dsrc.root=../pgenexamples/src/test/java -Dresources.root=../pgenexamples/src/test/resources
 
+defaultpackage="com.dmcc.sample.pages"
+script="$(basename ${0})"
+
+function usage(){
+	printf "[USAGE]:\n"
+	printf "\t%s -url \"the url\" [-file \"the source HTML file\": optional]\n" "${script}"
+}
+
+function error(){
+	printf "[ERR] %-30s\n" "${1}"
+}
+
+function info(){
+	printf "[INFO] %-30s\n" "${1}"
+}
+
+function errorAndUsage(){
+	error "${1}"
+	usage
+}
 function show(){
 
 	argname="${1}"
@@ -109,7 +125,7 @@ function generate(){
 
 	if [[ "${res}" == "0" ]]
 	then
-		echo "[INFO] Successfully generated pages"
+		info " Successfully generated pages"
 		return 0
 	else
 		echo "[ERR] Failed to generate pages"
@@ -117,19 +133,6 @@ function generate(){
 	fi
 }
 
-function usage(){
-	printf "[USAGE]:\n"
-	printf "\t%s -url \"the url\" [-file \"the source HTML file\": optional]\n" "${script}"
-}
-
-function error(){
-	printf "[ERR] %-30s\n" "${1}"
-}
-
-function errorAndUsage(){
-	error "${1}"
-	usage
-}
 
 function processArgs(){
 	while [[ ! -z "${1}" ]]
@@ -214,6 +217,29 @@ function verifyArgs(){
 	if [[ -z "${ROOT}" ]]
 	then
 		ROOT="."
+	elif [[ ! -d "${ROOT}" ]]
+	then
+		mkdir "${ROOT}"
+	fi
+
+	packagefolder="${ROOT}/src/test/java/$(echo "${PACKAGE}" | sed  s/"\."/"\/"/g)"
+
+	if [[ ! -d "${packagefolder}" ]]
+	then
+		info "Creating page class folder ${packagefolder} ..."
+
+		mkdir -p ${packagefolder}
+
+		res="${?}"
+
+		if [[ "${res}" != "0" ]]
+		then
+			error "Failed to create page class folder ${packagefolder}"
+			return 1
+		fi
+
+		info "Done."
+
 	fi
 
 	show "URL" "${URL}"
@@ -229,17 +255,18 @@ function verifyArgs(){
 # Process all arguments fed into this script ...
 processArgs ${*}
 
-# Exit script on any errors ...
+# Exit script on any arg processing errors ...
 exitOnError "${?}"
 
 # Verify arguments fed into this script ...
 verifyArgs
 
-# Exit script on any errors ...
+# Exit script on any arg validation errors ...
 exitOnError "${?}"
 
 # Generate page classes ...
 generate "${URL}" "${PACKAGE}" "${ROOT}" "${HTMLSOURCEFILE}"
 
+# Exit script ...
 exit "${?}"
 
