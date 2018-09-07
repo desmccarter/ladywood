@@ -24,7 +24,7 @@
 
 ### Problems when using SeleniumQA PageFactory
 
-Using Selenium QA PageFactory out of the box, all page classes are created manually by the tester (or developer). This can often lead to complications:
+If Selenium QA PageFactory is used out of the box then all page classes are created manually by the tester (or developer). This can often lead to complications:
 
 #### 1. Problems with element rich pages
 
