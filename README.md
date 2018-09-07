@@ -16,9 +16,11 @@
 
 ##### Quick Introduction to the Page Object Pattern
 
-In a nutshell, each HTML web page under test are typically mapped to one class containing getters and setters. These getters/setters prepresent page elements and are used to set/get data to/from these elements. Methods also normally exist for trigering physical page events, such as *click*, *doubleClick* etc.
+**In a nutshell, the Page Object Pattern is a one to one mapping of HTML pages (under test) to individual test classes**. These classes are then typically used during a test to automatically interact with the page itself. Page interaction happens via the classes getter and setter methods. These methods prepresent actions on page elements, typically for reading or writing text/data to these elements. Methods also normally exist for trigering physical page events, such as *click*, *doubleClick* etc.
 
-Creating an instance of a page class forms the page object: an object describing elements on the page under test. This object is then typically used to programmically interact with this page during the execution of a test case, for example, by automatically filling in a form.
+###### The Page Object
+
+Creating an instance of a page (**object pattern**) class forms the page object: an object which can be used to interact with the page under test. These actions may include (for example) automatically filling in a form, reading a form or checking for the existence of elements after a certain action has been made.
 
 ### Problems when using SeleniumQA PageFactory
 
