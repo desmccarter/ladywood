@@ -1,31 +1,59 @@
+# Author	: Des McCarter
+# Description	: Generates Page (Object Pattern) class files
+# Arguments	:
+#	-url	: The URL
+#	-root	: [OPTIONAL] The root folder from which page class files are generated. Current working directory is default.
+
 htmlfiles="src/main/resources/inputpages/files/html"
 defaultpackage="com.dmcc.sample.pages"
 script="$(basename ${0})"
 
 args="${*}"
 
-# Google ...
+####################################
+# Exceuting via POM: Examples ...  #
+####################################
+
+##################
+# Google.com ... #
+##################
+
 #mvn clean install "exec:java" -Durl=https://www.google.com -Dpackage="com.dmcc.sample.pages.google" -Dsrc.root=../pgenexamples/src/test/java -Dresources.root=../pgenexamples/src/test/resources
 
-# BJSS timesheets ...
-#mvn clean install "exec:java" -Durl=https://bjss.my.salesforce.com -Dpackage="com.dmcc.sample.pages.timesheets" -Dsrc.root=../pgenexamples/src/test/java -Dresources.root=../pgenexamples/src/test/resources
+##################
+# Ocado.com ...  #
+##################
 
-# Ocado
 #mvn clean install "exec:java" -Durl=https://www.ocado.com/webshop/quickReg.do -Dpackage="com.dmcc.sample.pages.ocado" -Dsrc.root=../pgenexamples/src/test/java -Dresources.root=../pgenexamples/src/test/resources
 
-# Expedia
+##################
+# Expedia.com	 #
+##################
+
 #mvn clean install "exec:java" -Durl=https://www.expedia.co.uk -Dpackage="com.dmcc.sample.pages.expedia" -Dsrc.root=../pgenexamples/src/test/java -Dresources.root=../pgenexamples/src/test/resources
 
-# HSBC 
+##############################################
+# HSBC (using text HTML text file as source) #
+##############################################
+
 #mvn clean install "exec:java" -Duse.file=true -Durl=https://www.hsbc.co.uk -Dfile=hsbc.html -Dpackage="com.dmcc.sample.pages.hsbc" -Dsrc.root=../pgenexamples/src/test/java -Dresources.root=../pgenexamples/src/test/resources
 
-# LLoyds Bank
+#########################################################
+# LLoyds Bank.com (using HTML text file as HTML source) #
+#########################################################
+
 #mvn clean install "exec:java" -Duse.file=true -Dfile=lloydsbank.html -Durl=https://www.lloydsbank.com -Dpackage="com.dmcc.sample.pages.lloydsbank" -Dsrc.root=../pgenexamples/src/test/java -Dresources.root=../pgenexamples/src/test/resources
 
-# Instagram
+##################################################
+# Instagram.com	 (using HTML text file as source #
+##################################################
+
 #mvn clean install "exec:java" -Duse.file=true -Dfile=instagram.html -Durl=https://www.instagram.com -Dpackage="com.dmcc.sample.pages.instagram" -Dsrc.root=../pgenexamples/src/test/java -Dresources.root=../pgenexamples/src/test/resources
 
-#  Last Minute
+#####################################################
+#  Last Minute.com (using HTML text file as source) #
+#####################################################
+
 #mvn clean install "exec:java" -Duse.file=true -Dfile=lastminute.html -Durl=https://www.lastminute.com -Dpackage="com.dmcc.sample.pages.lastminute" -Dsrc.root=../pgenexamples/src/test/java -Dresources.root=../pgenexamples/src/test/resources
 
 function show(){
@@ -125,6 +153,28 @@ function processArgs(){
 			fi
 
 			ROOT="${1}"
+		elif [[ "${1}" == "-package" ]]
+		then
+			shift
+
+			if [[ -z "${1}" ]]
+			then
+				errorAndUsage "-package flag requires a supplemental argument (the name of the package which will contain all page classes. Default is ${defaultpackage})"
+				return 1
+			fi
+
+			PACKAGE="${1}"
+		elif [[ "${1}" == "-htmlfile" ]]
+		then
+			shift
+
+			if [[ -z "${1}" ]]
+			then
+				errorAndUsage "-htmlfile flag requires a supplemental argument (the name of the HTML file containing elements to be used to generate page classes)"
+				return 1
+			fi
+
+			PACKAGE="${1}"
 		fi
 		
 		shift
@@ -173,16 +223,19 @@ function verifyArgs(){
 	fi
 }
 
+# Process all arguments fed into this script ...
 processArgs ${*}
 
+# Exit script on any errors ...
 exitOnError "${?}"
 
+# Verify arguments fed into this script ...
 verifyArgs
 
+# Exit script on any errors ...
 exitOnError "${?}"
 
-#generate "https://www.lastminute.com" "com.dmcc.sample.pages.lastminute" "../pgenexamples" "${htmlfiles}/lastminute.html"
-
+# Generate page classes ...
 generate "${URL}" "${PACKAGE}" "${ROOT}" "${HTMLSOURCEFILE}"
 
 exit "${?}"
