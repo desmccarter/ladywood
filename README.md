@@ -11,7 +11,7 @@
 
 #### Background: SeleniumQA PageFactory
 
-**Selenium QA PageFactory** is a well known utility that enables developers and testers to implement web / mobile based tests based on the Page Object Pattern.
+**Selenium QA PageFactory** is a well known utility that enables developers and testers to implement web / mobile based tests based on the well known and commonly used [Page Object Pattern](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/). 
 
 In a nutshell, each HTML page being tested is mapped to a class containing getters and setters. These getters/setters prepresent page elements and are used to set/get data to/from these elements. There are also methods in the class which are used to fire of a physical page events, such as click, doubleClick etc.
 
