@@ -20,7 +20,7 @@
 
 ###### The Page Object
 
-**Creating an instance of a page (*object pattern*) class forms the page object**: an object which can be used to interact with the page under test. These interactions may include (for example) automatically filling in a form, reading a form or checking for the existence of elements after a certain action has been made.
+**Creating an instance of a page (*object pattern*) class forms the page object**: an object which can be used to interact with the page under test. These interactions may include (for example) automatically filling in a form, reading a form or checking for the existence of elements after a certain action/event has been occurred.
 
 ### Problems when using SeleniumQA PageFactory
 
