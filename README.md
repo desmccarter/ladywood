@@ -24,11 +24,19 @@ Creating an instance of a page (**object pattern**) class forms the page object:
 
 ### Problems when using SeleniumQA PageFactory
 
-Using Selenium QA PageFactory out of the box, all page classes are created manually by the tester (or developer). This can often lead to complications especially in cases where pages under test are rich with page elements (i.e. where the number of elements on pages is significantly large). Problems can also occur around the initial stage of development from a testers perspective, where element id's, names, xpath locations etc are frequently changed by developers (especially when these changes are not expected). 
+Using Selenium QA PageFactory out of the box, all page classes are created manually by the tester (or developer). This can often lead to complications:
+
+#### 1. Element Rich Pages
+
+Cases where pages under test are rich with page elements (i.e. where the number of elements on pages is significantly large). 
+
+#### 2. Acceptance Test Execution False Negatives
+
+Problems can also occur around the initial stage of development from a testers perspective, where element id's, names, xpath locations etc are frequently changed by developers (especially when these changes are not expected). Time (and hence money) is then spent attempting in resolving these issues only to conclude these (false negative) changes.
 
 ### Problems can be minimised using NEO PageFactory
 
-***NEO PageFactory was developed to (at least) minimise these issues***. It does so by by going one step further and GENERATES all page classes being used for all tests. This a. reduces time taken in creating page classes (as these classes can be used straight away within the test) and can also be used at the UNIT testing stage for every build as a diff between page class generations. The latter becomes very useful because it minimises (dev page modification) issues during the acceptance testing phase (which is normally the stage that page modification issues are generally discovered).
+***NEO PageFactory was developed to (at least) minimise these issues***. It does so by by going one step further by **GENERATING all page classes being used for all tests**. This a. reduces time taken in creating page classes (as these classes can be used straight away within the test) and can also be used at the UNIT testing stage for every build as a diff between page class generations. The latter becomes very useful because it minimises (dev page modification) issues during the acceptance testing phase (which is normally the stage that page modification issues are generally discovered).
 
 ### How does NEO PageFactory work?
 
