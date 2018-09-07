@@ -26,9 +26,9 @@ Creating an instance of a page (**object pattern**) class forms the page object:
 
 Using Selenium QA PageFactory out of the box, all page classes are created manually by the tester (or developer). This can often lead to complications:
 
-#### 1. Element Rich Pages
+#### 1. Problems with element rich pages
 
-Cases where pages under test are rich with page elements (i.e. where the number of elements on pages is significantly large). 
+Problems often occur in cases where web pages (under test) are very rich with page elements (i.e. where the number of elements on pages is significantly large and changable). 
 
 #### 2. Acceptance Test Execution False Negatives
 
