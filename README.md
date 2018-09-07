@@ -46,7 +46,7 @@ Problems can also occur around the initial stage of development from a testers p
 
 ##### ... because it can be used as part of (acceptance test related) UNIT Tests
 
-**Page generation can also be used at the UNIT testing development phase for every build as a diff between page class generations**. The latter becomes very useful because it minimises (dev page modification) issues during the acceptance testing phase (which is normally the stage that page modification issues are generally discovered).
+**Page generation can also be used at the UNIT testing development phase for every build as a diff between page class generations**. The latter becomes very useful because **it minimises (dev page modification) issues during the acceptance testing phase** (which is normally the stage that page modification issues are generally discovered).
 
 ### How does NEO PageFactory work?
 
