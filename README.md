@@ -14,7 +14,7 @@
 **NEO PageFactory is an extension to the well known and used Selenium QA PageFactory**. SeleniumQA PageFactory is a web/mobile testing utility that enables developers and testers to implement web / mobile based tests based on a testing pattern named the [Page Object Pattern](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/). 
 > **Click [here](http://toolsqa.com/selenium-cucumber-framework/page-object-design-pattern-with-selenium-pagefactory-in-cucumber/)** for a **detailed description of the Page Object Pattern**. 
 
-##### Introduction to the Page Object Pattern
+##### Quick Introduction to the Page Object Pattern
 
 In a nutshell, each HTML web page under test are typically mapped to one class containing getters and setters. These getters/setters prepresent page elements and are used to set/get data to/from these elements. Methods also normally exist for trigering physical page events, such as *click*, *doubleClick* etc.
 
