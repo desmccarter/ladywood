@@ -21,6 +21,50 @@ public class Select extends Tag {
 	}
 	
 	@Override
+	protected Tag generateTagFromMatcher(Matcher m) throws PageElementParseException{
+		
+		String attrs=m.group(1);
+		String data=m.group(2);
+		
+		String id=getAttrValue("id", attrs);
+		String name=getAttrValue("name", attrs);
+		
+		Tag tag=new Select();
+		
+		tag.setHtmlType("select");
+		
+		if( (id!=null) && (id.length()>0) ){
+			tag.setByExpr(id);
+			tag.setByType(ByTypeEnum.id);
+			tag.setName(id);
+		}
+		else
+		if( (name!=null) && (name.length()>0) ){
+			tag.setByExpr(name);
+			tag.setByType(ByTypeEnum.name);
+			tag.setName(name);
+		}
+		
+		if(tag.getName()!=null){
+			Pattern p = Pattern.compile("<option[^>]*?>([^<]*?)</option>");
+			
+			Matcher m2=p.matcher(data);
+			
+			List<String> optionslist = new ArrayList<String>();
+			
+			while( m2.find()){
+				optionslist.add(m2.group(1));
+			}
+			
+			if(optionslist.size()>0){
+				tag.setOptions(optionslist);
+			}
+		}
+		
+		return tag;
+	}
+	
+	@Override
 	protected boolean tidy(final String attrs, final String data) {
 		
 		Pattern p = Pattern.compile("<option[^>]*>(.*?)(</option>)");
