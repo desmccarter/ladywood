@@ -163,29 +163,9 @@ public class Tag {
 								if(isclean){
 									isclean=!this.getName().toUpperCase().equals("NBSP");
 								}
-								else
-								{
-									debug("(isClean()) : element is HIDDEN");
-								}
-							}
-							else
-							{
-								debug("(isClean()) : NO name set");
 							}
 					}
-					else
-					{
-						debug("(isClean()) : NO htmlType set");
-					}
 			}
-			else
-			{
-				debug("(isClean()) : NO byType set");
-			}
-		}
-		else
-		{
-			debug("(isClean()) : NO byExpr set");
 		}
 
 		return isclean;
