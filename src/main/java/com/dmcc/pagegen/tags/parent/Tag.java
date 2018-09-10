@@ -110,6 +110,7 @@ public class Tag {
 	
 	public void setHtmlType(final String value){
 		this.htmlType=value;
+		debug("(setHtmlType()): "+getHtmlType());
 	}
 	
 	public String getHtmlType() {
@@ -145,15 +146,48 @@ public class Tag {
 	
 	public boolean isClean(){
 		boolean isclean=
-				(this.getByExpr()!=null) && (this.getByExpr().length()>0) 
-				&& (this.getByType()!=null) && (this.getHtmlType()!=null)
-				&& (this.getHtmlType().length()>0)
-				&& (this.getName()!=null) && (this.getName().length()>0);
+				(this.getByExpr()!=null) && (this.getByExpr().length()>0);
 		
-		if(isclean){
-			isclean=!getHtmlType().trim().equals("hidden");
+		if( isclean ){
+				isclean =  (this.getByType()!=null);
+
+			if( isclean ){
+					isclean = (this.getHtmlType()!=null) && (this.getHtmlType().length()>0);
+					
+					if(isclean){
+							isclean = (this.getName()!=null) && (this.getName().length()>0);
+							
+							if(isclean){
+								isclean=!getHtmlType().trim().equals("hidden");
+								
+								if(isclean){
+									isclean=!this.getName().toUpperCase().equals("NBSP");
+								}
+								else
+								{
+									debug("(isClean()) : element is HIDDEN");
+								}
+							}
+							else
+							{
+								debug("(isClean()) : NO name set");
+							}
+					}
+					else
+					{
+						debug("(isClean()) : NO htmlType set");
+					}
+			}
+			else
+			{
+				debug("(isClean()) : NO byType set");
+			}
 		}
-		
+		else
+		{
+			debug("(isClean()) : NO byExpr set");
+		}
+
 		return isclean;
 	}
 	
@@ -217,11 +251,12 @@ public class Tag {
 		
 		List<Tag> list = new ArrayList<Tag>();
 		
-		String tagName=getTagName();
 		
-		list.addAll(parseElements(html));
+		
+		list.addAll(parseCompleteElements(html));
+		
 		//list.addAll(parseInlineElements(tagName, html, this));
-		//list.addAll(parseInCompleteElements(tagName, html, this));
+		list.addAll(parseInCompleteElements(html, this));
 		
 		List<Tag> dedupedlist = dedupeTagList(list);
 		
@@ -256,17 +291,22 @@ public class Tag {
 	protected String getElementWithNoChildElementsExpression(final String tagName){
 		return "<"+tagName+" ([^>]*)[^\\/]>([^<]*)</"+tagName+">";
 	}
+	
+	protected String getInCompleteElementSearchExpression(){
+		String tagName=getTagName();
+		
+		return "<"+tagName+" ([^>]*?)[^\\/]>";
+	}
 
 	protected String getCompleteElementSearchExpression()throws PageElementParseException {
 		throw new PageElementParseException("This method needs to be overriden by implementation");
 	}
 	
-	protected  List<Tag> parseElements(String input) throws PageElementParseException{
-		
+	protected  List<Tag> parseCompleteElements(final String input) throws PageElementParseException{	
 		String tagName=getTagName();
 		
 		String expression = getCompleteElementSearchExpression();
-
+	
 		List<Tag> list = new ArrayList<Tag>();
 
 		if(expression!=null){
@@ -346,8 +386,8 @@ public class Tag {
 		return list;
 	}
 	
-	protected List<Tag> parseInCompleteElements(String tagName, 
-			String input, Tag element) throws PageElementParseException{
+	protected List<Tag> parseInCompleteElements(String input, Tag element) throws PageElementParseException{
+		String tagName=getTagName();
 		
 		Pattern p = Pattern.compile("<"+tagName+"[ |\t]*([^>]*)>");
 		
@@ -369,7 +409,7 @@ public class Tag {
 			
 			Tag tag = getTag(attrs,description);
 			
-			if(isClean()){
+			if(tag.isClean()){
 				debug("ELEMENT is clean");
 				list.add(tag);
 			}
@@ -396,7 +436,7 @@ public class Tag {
 		return cleanInput;
 	}
 	
-	private void initByExprAndByType(final String tagData, final String id, final String name){
+	private void initByExprAndByType(final String id, final String name){
 		if( (id!=null) && (id.length()>0) ){
 			this.setByExpr(id);
 			this.setByType(ByTypeEnum.id);
@@ -405,18 +445,19 @@ public class Tag {
 		if( (name!=null) && (name.length()>0) ) {
 			this.setByExpr(name);
 			this.setByType(ByTypeEnum.name);
-		}			
+		}	
 	}
 	
 	private void initHtmlType(final String type){		
-		String htmltype=type;
-		
-		if( (htmltype==null) || (htmltype.length()==0) ){
-			htmltype="text";
+		if( (type==null) || (type.length()==0) ){
+			this.setType("text");
+			this.setHtmlType("text");
 		}
-
-		this.setType(htmltype);
-		this.setHtmlType(htmltype);
+		else
+		{
+			this.setType(type);
+			this.setHtmlType(type);
+		}		
 	}
 	
 	private void initName(final String tagData){
@@ -456,8 +497,11 @@ public class Tag {
 	}
 	
 	protected Tag generateTagFromMatcher(Matcher m) throws PageElementParseException{
+		
+		int numberOfGroups=m.groupCount();
+		
 		String attrs=" "+m.group(1);
-		String data=m.group(2);
+		String data=numberOfGroups>=2?m.group(2):null;
 		
 		debug("FOUND (parseElements()) element type '"+getTagName()+"'.\nATTRS: "+attrs+".\nDATA: "+data);
 		
@@ -476,6 +520,10 @@ public class Tag {
 		} 
 	}
 	
+	private boolean byTypeIsSet(){
+		return (this.getByType()!=null) && (this.getByType().equals(ByTypeEnum.id) || this.getByType().equals(ByTypeEnum.name));
+	}
+	
 	protected Tag getTag(final String attrs,
 			final String tagData)
 		throws PageElementParseException {
@@ -486,17 +534,27 @@ public class Tag {
 		String type=getAttrValue("type",attrs);
 		String href=getAttrValue("href",attrs);
 
-		t.initByExprAndByType(tagData,id,name);
+		t.initByExprAndByType(id,name);
 		t.initHtmlType(type);
-		t.initName(tagData);
-		t.initHref(href);
-		t.initXPath(tagData);
 		
-		if( (!t.isClean()) && !t.tidy(attrs,tagData) ){
-			t=null;
+		debug("1 TYPE=["+type+"] byExpr=["+t.getByExpr()+"] htmlType=["+t.getHtmlType()+"]");
+		
+		if( (tagData!=null) && (tagData.length()>0) ){
+			t.initName(tagData);
 		}
-					
-		return clean(t);
+		else
+		if( t.byTypeIsSet() ){
+			t.initName(t.getByExpr());
+		}
+		
+		if( (t.getByExpr()==null) || (t.getByExpr().length()==0) ){
+			t.initHref(href);
+			t.initXPath(tagData);
+		}
+		
+		debug("2 TYPE=["+type+"] byExpr=["+t.getByExpr()+"]");
+			
+		return t;
 	}
 	
 	protected String getAttrValue(String attrName, String attrs){
@@ -511,7 +569,7 @@ public class Tag {
 				if(attrsplit2.length==2){
 					String searchname=attrsplit2[0].trim().replace("\"","").replace("'", "");
 					if(searchname.equals(attrName)){
-						value=attrsplit2[1].trim().replace("\"", "").replace("'", "");
+						value=attrsplit2[1].trim().replace("\"", "").replace("'", "").replace("/", "");
 						
 						if(value.length()==0){
 							value=null;

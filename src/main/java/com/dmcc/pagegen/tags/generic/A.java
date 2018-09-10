@@ -20,9 +20,9 @@ public class A extends Tag {
 		return false;
 	}
 	
-	protected  List<Tag> parseElements(String input) throws PageElementParseException{
+	protected  List<Tag> parseCompleteElements(String input) throws PageElementParseException{
 	
-		List<Tag> list = super.parseElements(input);
+		List<Tag> list = super.parseCompleteElements(input);
 		
 		return list;
 	}

@@ -32,17 +32,17 @@ public class Select extends Tag {
 		Tag tag=new Select();
 		
 		tag.setHtmlType("select");
-		
-		if( (id!=null) && (id.length()>0) ){
-			tag.setByExpr(id);
-			tag.setByType(ByTypeEnum.id);
-			tag.setName(id);
-		}
-		else
+
 		if( (name!=null) && (name.length()>0) ){
 			tag.setByExpr(name);
 			tag.setByType(ByTypeEnum.name);
 			tag.setName(name);
+		}
+		else
+		if( (id!=null) && (id.length()>0) ){
+			tag.setByExpr(id);
+			tag.setByType(ByTypeEnum.id);
+			tag.setName(id);
 		}
 		
 		if(tag.getName()!=null){
