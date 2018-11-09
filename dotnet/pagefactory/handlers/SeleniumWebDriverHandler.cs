@@ -573,15 +573,5 @@ namespace pagefactory.handlers
 
             ds.CurrentDriver.SwitchTo().Frame(frame);
         }
-
-        public void CloseBrowser()
-        {
-            string closeBrowserFlag = AppSettings.Get("closebrowser");
-
-            if ((closeBrowserFlag != null) && (closeBrowserFlag.ToUpper().Equals("TRUE")))
-            {
-                ds.CurrentDriver.Quit();
-            }
-        }
     }
 }
