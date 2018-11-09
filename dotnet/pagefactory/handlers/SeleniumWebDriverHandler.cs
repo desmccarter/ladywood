@@ -271,7 +271,11 @@ namespace pagefactory.handlers
             }
         }
 
-        protected string PointToThisWindowContext()
+        /// <summary>
+        /// Points to the latest window handle.
+        /// </summary>
+        /// <returns></returns>
+        protected string PointLatestWindowHandle()
         {
             string title = null;
 
@@ -317,7 +321,7 @@ namespace pagefactory.handlers
             return title;
         }
 
-        protected void PointToMainWindowContext()
+        protected void PointToOriginalWindowHandle()
         {
             if ((MainWindowHandle != null) && (MainWindowHandle.Length > 0))
             {
@@ -559,7 +563,7 @@ namespace pagefactory.handlers
 
         protected virtual void SwitchToIframePopup()
         {
-            PointToThisWindowContext();
+            PointLatestWindowHandle();
 
             IWebElement frame = getIFrameByClassName("runtime-popup");
 
@@ -568,6 +572,16 @@ namespace pagefactory.handlers
             }
 
             ds.CurrentDriver.SwitchTo().Frame(frame);
+        }
+
+        public void CloseBrowser()
+        {
+            string closeBrowserFlag = AppSettings.Get("closebrowser");
+
+            if ((closeBrowserFlag != null) && (closeBrowserFlag.ToUpper().Equals("TRUE")))
+            {
+                ds.CurrentDriver.Quit();
+            }
         }
     }
 }

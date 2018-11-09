@@ -81,7 +81,7 @@ namespace pagefactory.xml
         /// </summary>
         public void SkipSecurityWarning()
         {
-            PointToThisWindowContext();
+            PointLatestWindowHandle();
 
             try
             {
@@ -89,7 +89,7 @@ namespace pagefactory.xml
             }
             finally
             {
-                PointToMainWindowContext();
+                PointToOriginalWindowHandle();
             }
         }
 
@@ -108,7 +108,7 @@ namespace pagefactory.xml
             }
             finally
             {
-                PointToMainWindowContext();
+                PointToOriginalWindowHandle();
             }
         }
 
@@ -160,7 +160,7 @@ namespace pagefactory.xml
             }
             finally
             {
-                PointToMainWindowContext();
+                PointToOriginalWindowHandle();
             }
 
             return value;
@@ -208,7 +208,7 @@ namespace pagefactory.xml
             }
             finally
             {
-                PointToMainWindowContext();
+                PointToOriginalWindowHandle();
             }
 
             return value;
@@ -241,7 +241,7 @@ namespace pagefactory.xml
             }
             finally
             {
-                PointToMainWindowContext();
+                PointToOriginalWindowHandle();
             }
         }
 
@@ -283,7 +283,7 @@ namespace pagefactory.xml
             }
             finally
             {
-                PointToMainWindowContext();
+                PointToOriginalWindowHandle();
             }
         }
 
@@ -416,17 +416,15 @@ namespace pagefactory.xml
             }
             finally
             {
-                PointToMainWindowContext();
+                PointToOriginalWindowHandle();
             }
 
             return popupPage;
         }
 
-        public bool ElementDisabled(string elementName)
+        public bool ElementEnabled(string elementName)
         {
             Element e = PrepareElement(GetElementByName(elementName));
-
-            Page popupPage = null;
 
             bool result = false;
 
@@ -434,9 +432,7 @@ namespace pagefactory.xml
             {
                 Log.Debug("[INFO] Clicking element " + e.Name + "(" + e.XPath + ")");
 
-                result=CheckElementDisabledByType(GetByType(e, null));
-
-                popupPage = e.GetPageRedirect();
+                result=ElementIsEnabled(GetByType(e, null));
 
                 Log.Debug("[INFO] Successfully clicked element " + e.Name);
             }
@@ -446,7 +442,7 @@ namespace pagefactory.xml
             }
             finally
             {
-                PointToMainWindowContext();
+                PointToOriginalWindowHandle();
             }
 
             return result;
@@ -479,7 +475,7 @@ namespace pagefactory.xml
             }
             finally
             {
-                PointToMainWindowContext();
+                PointToOriginalWindowHandle();
             }
 
             return popupPage;
@@ -501,7 +497,7 @@ namespace pagefactory.xml
                 throw new Exception("[ERR] (PrepareElement()) Element object is null");
             }
 
-            PointToThisWindowContext();
+            PointLatestWindowHandle();
 
             if (e.ElementIsInIFrame())
             {
