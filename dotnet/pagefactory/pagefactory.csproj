@@ -70,7 +70,7 @@
     <Compile Include="json\PagesJson.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="webdriverhandler\DriverWrappercs.cs" />
+    <Compile Include="initialiser\DriverInitialiser.cs" />
     <Compile Include="xml\Element.cs" />
     <Compile Include="xml\InheritsPages.cs" />
     <Compile Include="xml\Page.cs" />

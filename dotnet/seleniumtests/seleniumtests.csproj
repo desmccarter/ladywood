@@ -47,6 +47,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EmbeddedResource Include="resources\pages\expedia\pages.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\environments\environments.csproj">
+      <Project>{66f5a30a-2347-46e8-bf89-7e5578842eb0}</Project>
+      <Name>environments</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\genericutils\genericutils.csproj">
+      <Project>{0730306b-c145-48a4-886d-727e0b8bfd90}</Project>
+      <Name>genericutils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\logging\logging.csproj">
+      <Project>{f20aee26-2222-4ef8-b5dc-3225066352ab}</Project>
+      <Name>logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\pagefactory\pagefactory.csproj">
+      <Project>{9e7a6fb2-987a-4039-b2b6-c80c50a1ec62}</Project>
+      <Name>pagefactory</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
