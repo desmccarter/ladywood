@@ -28,15 +28,7 @@ namespace pagefactory.handlers
 
         protected string headerTextXPathName = null;
 
-        public static int TIMEOUT_PAGELOAD = int.Parse(AppSettings.Get("PageWebDriver.TIMEOUT_PAGELOAD"));
-
-        public static int TIMEOUT_PAGERETRYLOAD = int.Parse(AppSettings.Get("PageWebDriver.TIMEOUT_PAGERETRYLOAD"));
-
         public string Url { get { return url; } set { url = value; } }
-
-        //protected string mainWindowHandle = null;
-
-        protected static string mainWindowTitle = "NPS_Portal";
 
         private static string mhandle = null;
 
@@ -408,9 +400,6 @@ namespace pagefactory.handlers
             // *** iitialise / re-initialise webdriver object .. 
             StartWebDriver();
 
-            TimeSpan ts = TimeSpan.FromMilliseconds(TIMEOUT_PAGELOAD);
-
-
             ds.CurrentDriver.Navigate().GoToUrl(url);
 
             // *** if credentials are given then
@@ -436,9 +425,7 @@ namespace pagefactory.handlers
                     throw new Exception(
                         "[ERR] Expected Windows Login Authentication pop-up at this stage but no alert found");
                 }
-
-                ds.CurrentDriver.Manage().Timeouts().PageLoad = new TimeSpan(0, 0, 15);
-
+                
                 IOptions options = ds.CurrentDriver.Manage();
                 options.Window.Maximize();
             }

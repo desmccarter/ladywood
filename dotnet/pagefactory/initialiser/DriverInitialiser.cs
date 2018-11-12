@@ -1,15 +1,15 @@
 ﻿using OpenQA.Selenium;
 
-namespace pagefactory.webdriverhandler
+namespace pagefactory.initialiser
 {
-    public abstract class DriverWrapper
+    public abstract class DriverInitialiser
     {
-        public IWebDriver CurrentDriver
+        public IWebDriver WebDriver
         {
             get; set;
         }
 
-        public DriverWrapper()
+        public DriverInitialiser()
         {
             initialiseDriver();
         }

@@ -46,6 +46,7 @@ import com.dmcc.pagegen.exceptions.PageLoadException;
 import com.dmcc.pagegen.exceptions.PageResponseContentException;
 import com.dmcc.pagegen.exceptions.PageSerialiseException;
 import com.dmcc.pagegen.fields.FieldUtils;
+import com.dmcc.pagegen.page.mccarterp.McCarterDotNetPage;
 import com.dmcc.pagegen.page.mccarterp.McCarterPage;
 import com.dmcc.pagegen.page.webdriver.WebDriverUtils;
 import com.dmcc.pagegen.tags.generic.A;
@@ -78,6 +79,10 @@ public abstract class Page extends WebDriverUtils {
 	
 	protected String getPageFileName(){
 		return FieldUtils.getNameFromUrl(this.getUrlValue())+".json";
+	}
+	
+	protected String getPageName(){
+		return FieldUtils.getPageNameFromUrl(this.getUrlValue());
 	}
 	
 	protected String getPageFileNameWithPath(){
@@ -297,12 +302,12 @@ public abstract class Page extends WebDriverUtils {
 	
 	public abstract String toString();
 
-	protected static McCarterPage getPageClassInstance(final String packageName,
+	protected static McCarterDotNetPage getPageClassInstance(final String packageName,
 			final String srcRoot, final String resourcesRoot) throws PageLoadException {
 		
     	ApplicationContext context = new ClassPathXmlApplicationContext("appbeans.xml");
 
-		McCarterPage page =  (McCarterPage)context.getBean("PageBean");
+    	McCarterDotNetPage page =  (McCarterDotNetPage)context.getBean("PageBean");
 		
 		page.setPackageName(packageName);
 		page.setSrcRoot(srcRoot);
@@ -328,7 +333,7 @@ public abstract class Page extends WebDriverUtils {
 	public static Page generatePageClassFromUrl(final String url, final String packageName,
 			final String srcRoot, final String resourcesRoot) throws PageLoadException{
 		
-		McCarterPage page = getPageClassInstance(
+		McCarterDotNetPage page = getPageClassInstance(
 				packageName, srcRoot, resourcesRoot);
 		
 		page.buildFromUrl(url);
@@ -339,7 +344,7 @@ public abstract class Page extends WebDriverUtils {
 	public static Page generatePageClassFromFile(final String file, final String url, final String packageName,
 			final String srcRoot, final String resourcesRoot) throws PageLoadException{
 		
-		McCarterPage page = getPageClassInstance(
+		McCarterDotNetPage page = getPageClassInstance(
 				packageName, srcRoot, resourcesRoot);
 		
 		try {

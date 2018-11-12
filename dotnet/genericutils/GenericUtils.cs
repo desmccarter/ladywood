@@ -75,24 +75,5 @@ namespace uk.org.hs2.genericutils
         {
             return AppDomain.CurrentDomain.BaseDirectory;
         }
-
-        public static void CallProtectedMethod(object objectContainingMethod, 
-            string methodName, object[] parameters)
-        {
-            // *** get test function name ...
-            MethodInfo methodInfo =
-                objectContainingMethod.GetType().GetMethod(methodName,
-                BindingFlags.NonPublic | BindingFlags.Instance);
-
-            // *** throw error if test function not defined ...
-
-            if (methodInfo == null)
-            {
-                throw new Exception("[ERR] Private method '" + methodName + "' does not exist in object '"+
-                    objectContainingMethod.GetType().ToString());
-            }
-
-            methodInfo.Invoke(objectContainingMethod, parameters);
-        }
     }
 }

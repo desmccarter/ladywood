@@ -76,4 +76,20 @@ public class FieldUtils {
 		
 		return value;
 	}
+	
+	public static String getPageNameFromUrl(final String url){
+		String value="Page";
+		
+		if(url!=null){
+			Pattern p = Pattern.compile("^[^:]*[:]*[\\/]*[w]*[\\.]([^\\.]*).*$");
+			
+			Matcher m = p.matcher(url);
+			
+			if( m.find() ){
+				value=Convert.toCamelCase(m.group(1))+"Page";
+			}
+		}
+		
+		return value;
+	}
 }

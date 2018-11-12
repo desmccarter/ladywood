@@ -177,12 +177,38 @@ public class Tag {
 		
 		if( isClean() )
 		{
-			buffer.append("\t\t{\n");
-			buffer.append("\t\t\t\"name\" : \""+this.getName()+"\",\n");
-			buffer.append("\t\t\t\"byExpr\" : \""+this.getByExpr()+"\",\n");
-			buffer.append("\t\t\t\"byType\" : \""+this.getByType()+"\",\n");
-			buffer.append("\t\t\t\"htmlType\" : \""+this.getHtmlType()+"\"\n");
-			buffer.append("\t\t}\n");
+			// *** this is bad, but put a hardcoded flag in 
+			// *** for now to generate .NET type JSON expression ...
+			boolean dotnet=true;
+			
+			if(!dotnet){
+				buffer.append("\t\t{\n");
+				buffer.append("\t\t\t\"name\" : \""+this.getName()+"\",\n");
+				buffer.append("\t\t\t\"byExpr\" : \""+this.getByExpr()+"\",\n");
+				buffer.append("\t\t\t\"byType\" : \""+this.getByType()+"\",\n");
+				buffer.append("\t\t\t\"htmlType\" : \""+this.getHtmlType()+"\"\n");
+				buffer.append("\t\t}\n");
+			}
+			else
+			{
+				buffer.append("\t\t\t\t{\n");
+				
+				buffer.append("\t\t\t\t\t\"Name\": \""+this.getName()+"\",\n");
+				
+				if(this.getByType().equals(ByTypeEnum.xpath)){
+					buffer.append("\t\t\t\t\t\"XPath\": \""+this.getByExpr()+"\"\n");
+				}
+				else
+				if(this.getByType().equals(ByTypeEnum.id)){
+					buffer.append("\t\t\t\t\t\"ElementId\": \""+this.getByExpr()+"\"\n");
+				}
+				else
+				if(this.getByType().equals(ByTypeEnum.name)){
+					buffer.append("\t\t\t\t\t\"ElementName\": \""+this.getByExpr()+"\"\n");
+				}
+
+				buffer.append("\t\t\t\t}\n");
+			}
 		}
 		
 		return buffer.toString();
